@@ -1,0 +1,550 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Enriching Django templates with fancy logic</title>
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/zoo.css">
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section data-background-transition="slide" data-background-image="lib/img/no-notifications.png" data-background-size="50%">
+                    <div class="stretch">
+                    <h3>Enriching Django templates with <span class="fancy">fancy</span> logic</h3>
+                    </div>
+                    <br>
+                    <small>Alex Viscreanu</small>
+                    <br>
+                    <img class="kiwi-logo" src="lib/img/kiwi.png" alt="Kiwi.com">
+                </section>
+
+                <section>
+                    <div class="typewriter">
+                        <h2>whoami</h2>
+                    </div>
+                    <br>
+                    <h3>Alex Viscreanu</h3>
+                    <img class="avatar" src="lib/img/avatar.png" alt="">
+                    <h4>full stack developer</h4>
+                    <small>Kiwi.com platform team</small>
+                    <br>
+                    <a style="font-size: 24px !important">aexvir@kiwi.com</a>
+                    <br>
+                    <a style="font-size: 24px !important">@aexvir</a> <span style="font-size: 24px !important">everywhere else</span>
+                </section>
+
+                <section>
+                    <h3>
+                        so, what's all this about?
+                    </h3>
+                    <br>
+                    <div class="flex-horizontal">
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="2" src="lib/img/django.png" alt="">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="3" src="lib/img/vuejs.png" alt="">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="4" src="lib/img/webpack.png" alt="">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="flex-horizontal fragment fade-up" data-fragment-index="5">
+                        ...without dying
+                    </div>
+                </section>
+
+                <section>
+                    <h3>
+                        a little bit of background...
+                    </h3>
+                    <br>
+                    <p class="fragment fade-up" data-fragment-index="1">
+                        django is a <b>complete</b> solution, structured in layers
+                    </p>
+                    <br>
+                    <p class="fragment fade-up" data-fragment-index="2">ORM</p>
+                    <p class="fragment fade-up" data-fragment-index="3">views</p>
+                    <p class="fragment fade-up" data-fragment-index="4">templates</p>
+                </section>
+
+                <section>
+                    <h3>
+                        the django templating language
+                    </h3>
+                    <br>
+                    <p class="fragment fade-up" data-fragment-index="2">used for rendering data</p>
+                    <p class="fragment fade-up" data-fragment-index="3">basic branching and looping</p>
+                    <p class="fragment fade-up" data-fragment-index="4">templatetags</p>
+                    <p class="fragment fade-up" data-fragment-index="5">as logic-less as possible</p>
+                </section>
+
+                <section>
+                    <h3>
+                        right, so, what about...
+                    </h3>
+                    <br>
+                    <div class="flex-horizontal">
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="2" src="lib/img/jinja.png" alt="">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="3" src="lib/img/mako.png" alt="">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="4" src="lib/img/unknown.png" alt="">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="flex-horizontal fragment fade-up" data-fragment-index="5">
+                        ...sorry, but still template engines ¯\_(ツ)_/¯
+                    </div>
+                </section>
+
+                <section>
+                    <h3>
+                        ok, got it. So... what do you mean with <span class="fancy">fancy</span> logic?
+                    </h3>
+                    <br>
+                    <p class="fragment fade-up" data-fragment-index="2">generic views are awesome!</p>
+                    <p class="fragment fade-up" data-fragment-index="3">let me show you...</p>
+                </section>
+
+                <section>
+                    <img src="lib/img/screenshot-service-list.png" alt="">
+                </section>
+
+                <section>
+                    <img src="lib/img/screenshot-service-details.png" alt="">
+                </section>
+
+                <section>
+                    <p>...but sometimes we just need more</p>
+                    <p class="fragment fade-up" data-fragment-index="2">again, let me show you...</p>
+                </section>
+
+                <section>
+                    <img src="lib/img/screenshot-auditing-grid.png" alt="">
+                </section>
+
+                <section>
+                    <h3>sure, but I've already seen this using django, why are you here giving this talk?</h3>
+                    <br>
+                    <small class="fragment fade-up" data-fragment-index="1"> the classic approach is something like...</small>
+                    <div class="flex-horizontal">
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="2" src="lib/img/restframework.png" alt="">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="3" src="lib/img/react.png" alt="">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="4" src="lib/img/mapsigns.png" alt="">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="flex-horizontal fragment fade-up" data-fragment-index="5">
+                        not ideal for us
+                    </div>
+                </section>
+
+                <section>
+                    <h3>oh, ok, cool... how can do frontend development then?</h3>
+                    <br>
+                    <div class="flex-horizontal">
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="2" src="lib/img/anvil.png" alt="">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="3" src="lib/img/skulpt.png" alt="">
+                        </div>
+                        <div class="column">
+                            <h2 class="fragment fade-up" data-fragment-index="4">
+                                <i>Transcrypt</i>
+                            </h2>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="flex-horizontal fragment fade-up" data-fragment-index="5">
+                        too edgy, you'll need javascript
+                    </div>
+                </section>
+
+                <section>
+                    <h3>right, javascript, I've heard of that... <br> tell me more!</h3>
+                    <br>
+                    <blockquote cite="https://en.wikipedia.org/wiki/JavaScript" class="fragment fade-up" data-fragment-index="1">
+                        &ldquo;JavaScript (<span style="font-family: monospace !important">/ˈdʒɑːvəˌskrɪpt/</span>), often abbreviated as JS, is a high-level, interpreted programming language. It is a language which is also characterized as dynamic, weakly typed, prototype-based and multi-paradigm.&rdquo;
+                    </blockquote>
+                    <div class="flex-horizontal fragment fade-up" data-fragment-index="2">
+                        man... you are so funny 😓
+                    </div>
+                </section>
+
+                <section>
+                    <h3>ok, how do I use it in templates?</h3>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="1">code directly between <span style="font-family: monospace !important">&nbsp;&lt;script&gt;&lt;/script&gt;&nbsp;</span> tags</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="2">imported like <span style="font-family: monospace !important">&nbsp;&lt;script src="filename.js"&gt;&lt;/script&gt;&nbsp;</span></p>
+                </section>
+
+                <section>
+                    <h3>transpiling? merging? what are you talking about?</h3>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="1">
+                        <small> with plain Javascript you can get something like...</small>
+                        <pre class="flex-horizontal fragment fade-up" data-fragment-index="2"><code data-trim data-noescape class="javascript">
+                                $(document).on('ready', function () {
+                                    $('#btn_login').on('click', function () {
+                                        if($('#email').val().length &lt; 5) {
+                                            $('#status').html('Invalid Email');
+                                            $('#status').addClass('alert');
+                                            $('#status').delay(2000).hide(1000)
+                                        } else {
+                                            var domain = $('#email').val().indexOf('.',
+                                                $('#email').val().indexOf('@')
+                                            )
+                                            if(domain.length == 0) {
+                                                $('#status').html('Email domail is empty');
+                                                $('#status').addClass('error');
+                                                $('#status').delay(2000).hide(1000)
+                                            }
+                                        }
+                                    });
+                                });
+                        </code></pre>
+                    </p>
+                </section>
+
+                <section>
+                    <h3>Alright, all this sounds great, but how do you do it?</h3>
+                    <br>
+                    <small class="flex-horizontal fragment fade-up" data-fragment-index="1">First, let's define our needs</small>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="2">dependency management</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="3">ES2018 → ancient browser javascript</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="4">Vue.js components → plain js code</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="5">LESS → CSS + prefixes</p>
+                </section>
+
+                <section>
+                    <h3>A real world example...</h3>
+                    <br>
+                    <img src="lib/img/screenshot-login.png" alt="">
+                </section>
+
+                <section>
+                    <h3>let me give you some numbers...</h3>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="1">~1200 GitLab repositories</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="2">~300 microservices</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="3">~600k daily Sentry events 😅</p>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="4">we need a way to keep track of everything</p>
+                </section>
+
+                <section>
+                    <h3>so... what have you made to solve it?</h3>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="1">microservice catalogue</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="2">static code auditing</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="3">integrated with third party services</p>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="4">...and we called it&nbsp;<span class="branding">the zoo</span></p>
+                </section>
+
+                <section>
+                    <h3>i'm kinda interested on the auditing, can you elaborate?</h3>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="1">checking the source code for known vulnerabilities/issues</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="2">checking configuration files</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="3">security checks</p>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="4">...and it's modular, so you will add your own 😊</p>
+                </section>
+
+                <section>
+                    <h3>and what about the integrations?</h3>
+                    <br>
+                    <div class="flex-horizontal">
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="2" src="lib/img/sentry.png" alt="">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="3" src="lib/img/datadog.png" alt="">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="4" src="lib/img/pingdom.png" alt="">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="5" src="lib/img/gitlab.png" alt="">
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>...and what's next?</h3>
+                    <br>
+                    <div class="flex-horizontal">
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="2" src="lib/img/rancher.png" alt="">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="3" src="lib/img/checklist.png" alt="">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="4" src="lib/img/github.png" alt="">
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>alright, enough with the spam, let's go back to the implementation</h3>
+                </section>
+
+                <section>
+                    <h3>the project structure</h3>
+                    <br>
+                    <pre><code data-trim data-noescape class="bash">
+                        .
+                        ├── Dockerfile
+                        ├── docker-compose.yml
+                        ├── requirements.txt
+                        ├── setup.py
+                        ├── webpack
+                        │   ├── Dockerfile
+                        │   ├── config
+                        │   │   └── webpack.common.js
+                        │   ├── package.json
+                        │   ├── webpack.build.js
+                        │   ├── webpack.dev.js
+                        │   └── yarn.lock
+                        └── zoo
+                            └── app
+                                └── assets
+                                    ├── style
+                                    └── js
+                        &nbsp;
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>this webpack server... what should it do?</h3>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="2">dependency management</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="3">compile static files</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="4">optimizations "for free"</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="5">other goodies</p>
+                </section>
+
+                <section>
+                    <h3>webpack server implementation</h3>
+                    <br>
+                    <pre><code data-noescape data-trim class="dockerfile">
+                        FROM node:10-alpine
+                        WORKDIR /app
+                        COPY package.json /app/
+                        COPY yarn.lock /app/
+                        RUN npm install --global yarn && yarn install
+                        COPY * /app/
+                        CMD ["yarn", "production"]
+                    </code></pre>
+                    <pre><code data-noescape data-trim class="javascript">
+                        function scanStaticFiles() {
+                            basePath = path.resolve(__dirname, "..", "source/")
+                            entryPoints = {}
+
+                            filePaths = glob.sync(basePath + '/*/assets/js/*.js')
+
+                            if(filePaths) {
+                                entryPoints = Object.assign.apply(
+                                    {},
+                                    filePaths.map((filePath) => ({
+                                        [path.parse(filePath).name]: filePath
+                                    }))
+                                )
+                            }
+
+                            return entryPoints
+                        }
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>...but what if I don't use docker?</h3>
+                    <br>
+                    <h1 class="flex-horizontal fragment fade-up" data-fragment-index="1">you should.</h1>
+                </section>
+
+                <section>
+                    <h3>the DTL integration</h3>
+                </section>
+
+                <section>
+                    <h3>the django template</h3>
+                    <br>
+                    <pre><code data-trim data-noescape class="html">
+                        &lt;div id="repo-input" class="repo-input-container"&gt;
+                            &lt;repo-input&gt;&lt;/repo-input&gt;
+                        &lt;/div&gt;
+                        &lt;script&gt;
+                            const inputInfo = {
+                                id: '{{ widget.attrs.id }}',
+                                required: '{{ widget.required }}' == 'True',
+                                name: '{{ widget.name }}',
+                                initialValue: '{{ widget.value|default:"" }}'
+                            }
+                        &lt;/script&gt;
+                        &lt;script src="{% static 'service_form.js' %}"&gt;&lt;/script&gt;
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>service_form.js</h3>
+                    <br>
+                    <pre><code data-trim data-noescape class="javascript">
+                        import Vue from 'vue'
+                        import Vuex from 'vuex'
+                        import RepoInput from './components/RepoInput'
+                        import '../style/service_form.less'
+
+                        Vue.use(Vuex)
+
+                        const store = new Vuex.Store({
+                            state: {...},
+                            getters: {...},
+                            mutations: {...}
+                        })
+
+                        const app = new Vue({
+                            el: '#repo-input',
+                            store: store,
+                            components: { RepoInput }
+                        })
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3 style="margin-top: 2rem;">RepoInput.vue</h3>
+                    <section>
+                        <pre><code data-trim data-noescape class="html">
+                            &lt;template&gt;
+                                &lt;div :class="inputClasses"&gt;
+                                    &lt;input
+                                        type="text"
+                                        v-model="enteredText"
+                                        @keydown.up.prevent="decreaseCursor"
+                                        @keydown.down.prevent="increaseCursor"
+                                        @keydown.enter.prevent="doAction"
+                                        :required="inputInfo.required"&gt;
+                                    &lt;i class="dropdown icon"&gt;&lt;/i&gt;
+                                    &lt;input
+                                        type="hidden"
+                                        :name="inputInfo.name"
+                                        :id="inputInfo.id"
+                                        :data-initial-value="inputInfo.initialValue"
+                                        v-model="inputValue"&gt;
+                                    &lt;input-suggestions :inputHasFocus="isOnEditMode"&gt;&lt;/input-suggestions&gt;
+                                &lt;/div&gt;
+                            &lt;/template&gt;
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code data-trim data-noescape class="javascript">
+                            import RepoInputSuggestions from "./RepoInputSuggestions"
+
+                            export default {
+                                data () { return {...} },
+                                computed: {
+                                    inputClasses () {...}
+                                    currentRepoName () {...},
+                                    enteredText: {
+                                        get () {...},
+                                        set (val) {...}
+                                    },
+                                    inputValue: {
+                                        get () {...}
+                                    }
+                                },
+                                methods: {...},
+                                components: { RepoInputSuggestions }
+                            }
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h3>But how all of this works?</h3>
+                    <br>
+                    <img src="lib/img/webpack-conversion.png" alt="">
+                </section>
+
+                <section>
+                    <h3>just to conclude...</h3>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="1">generic views whenever it's possible</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="2">heavy logic components only where needed</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="3">easy to maintain and to scale</p>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="4">it's working fine for&nbsp;<b>us</b></p>
+                </section>
+
+                <section>
+                    <h2>so... any questions?</h2>
+                </section>
+
+                <section>
+                    <h2>Thanks everyone!</h2>
+                </section>
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            Reveal.initialize({
+                history: true,
+                dependencies: [
+                    { src: 'plugin/markdown/marked.js' },
+                    { src: 'plugin/markdown/markdown.js' },
+                    { src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    {
+                        src: 'https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js',
+                        async: true,
+                        callback: function() {
+                            anime({
+                                targets: '.fancy',
+                                color: [
+                                    {value: '#FF0000'},
+                                    {value: '#FFFF00'},
+                                    {value: '#00FF00'},
+                                    {value: '#00FFFF'},
+                                    {value: '#FF00FF'},
+                                ],
+                                easing: 'linear',
+                                loop: true,
+                                direction: 'alternate',
+                                duration: 2000
+                            })
+                        }
+                    }
+                ]
+            });
+        </script>
+    </body>
+</html>

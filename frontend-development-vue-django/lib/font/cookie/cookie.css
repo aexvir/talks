@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'Cookie';
+    src: url('Cookie-Regular.ttf');
+    src: url('Cookie-Regular.ttf?#iefix') format('embedded-opentype'),
+         url('Cookie-Regular.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
