@@ -1,0 +1,325 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>The Zoo - a service registry for humans</title>
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/zoo.css">
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section data-background-transition="fade" data-background-image="lib/img/splash.jpg" data-background-size="100%">
+                    <div class="stretch">
+                        <h2 style="margin-top: 25%"><span class="branding">the zoo</span></h2>
+                        <h5 style="font-size: .75em; opacity: .75;">
+                            a service registry for humans
+                        </h5>
+                    </div>
+                    <br>
+                    <small>Alex Viscreanu</small>
+                    <br>
+                    <img class="kiwi-logo" src="lib/img/kiwi.png" alt="Kiwi.com">
+                </section>
+
+                <section>
+                    <div class="typewriter">
+                        <h2>whoami</h2>
+                    </div>
+                    <br>
+                    <h3>Alex Viscreanu</h3>
+                    <img class="avatar" src="lib/img/avatar.png">
+                    <h4>full stack developer</h4>
+                    <small><img class="kiwi-logo" src="lib/img/kiwi.png" alt="Kiwi.com" style="height: 2em;"> <span style="line-height: 1.85em; margin-left: .5em">platform team</span></small>
+                    <br>
+                    <br>
+                    <a style="font-size: 24px !important">@aexvir</a> <span style="font-size: 24px !important">everywhere else</span>
+                </section>
+
+                <section>
+                    <h3>
+                        so, what's all this about?
+                    </h3>
+                    <br>
+                    <div class="flex-horizontal">
+                        <div class="column">
+                            <span class="fragment fade-up" data-fragment-index="1">concept</span>
+                            <br>
+                            <h1 class="fragment fade-up branding" data-fragment-index="1" style="font-size: 3em !important;">the zoo</h1>
+                        </div>
+                        <div class="column">
+                            <span class="fragment fade-up" data-fragment-index="2">implementation</span>
+                            <br>
+                            <img class="fragment fade-up" data-fragment-index="2" src="lib/img/cogs.png">
+                        </div>
+                        <div class="column">
+                            <span class="fragment fade-up" data-fragment-index="3">why OSS</span>
+                            <br>
+                            <img class="fragment fade-up" data-fragment-index="3" src="lib/img/opensource.png">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="flex-horizontal fragment fade-up" data-fragment-index="4">
+                        so... let's start!
+                    </div>
+                </section>
+
+                <section>
+                    <h3>let me give you some numbers...</h3>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="1">~1200 GitLab repositories</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="2">~300 microservices</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="3">~350 developers</p>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="4">we need a way to keep track of everything</p>
+                </section>
+
+                <section>
+                    <h3>what's exactly the problem?</h3>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="1">services depend on other services</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="2">teams need to cooperate</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="3">nobody can know everything</p>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="4">...and figuring out stuff is wasted time</p>
+                </section>
+
+                <section>
+                    <img src="lib/img/quote.png" style="border-radius: 10px;">
+                </section>
+
+                <section>
+                    <h3>so... what have you made to solve it?</h3>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="1">microservice catalogue</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="2">static code auditing</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="3">integrated with third party services</p>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="4">...and we called it&nbsp;<span class="branding">the zoo</span></p>
+                </section>
+
+                <section>
+                    <h3>what does it solve?</h3>
+                    <br>
+                    <div class="flex-horizontal">
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="1" src="lib/img/discover.png">
+                            <br>
+                            <span class="fragment fade-up" data-fragment-index="1">discovery</span>
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="2" src="lib/img/target.png">
+                            <br>
+                            <span class="fragment fade-up" data-fragment-index="2">targeting</span>
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="3" src="lib/img/inspect.png">
+                            <br>
+                            <span class="fragment fade-up" data-fragment-index="3">inspection</span>
+                        </div>
+                    </div>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="4">...it saves us a noticeable amount of time</span></p>
+                </section>
+
+                <section>
+                    <h3>i'm kinda interested on the auditing, can you elaborate?</h3>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="1">source code checks</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="2">configuration file checks</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="3">security checks</p>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="4">...and it's modular, so you will add your own 😊</p>
+                </section>
+
+                <section>
+                    <h3>how does it work?</h3>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="1">run over every repository</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="2">scan the dependencies</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="3">run our checks and save the results</p>
+                </section>
+
+                <section>
+                    <h3>how do you use that information?</h3>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="1">open issues</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="2">dependency usage</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="3">rate the service</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="4">offer reports in CI</p>
+                </section>
+
+                <section>
+                    <img src="lib/img/zoo-ci.png" style="border-radius: 10px;">
+                </section>
+
+                <section>
+                    <h3>and what about the integrations?</h3>
+                    <br>
+                    <div class="flex-horizontal">
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="2" src="lib/img/sentry.png">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="3" src="lib/img/datadog.png">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="4" src="lib/img/pingdom.png">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="5" src="lib/img/gitlab.png">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="6" src="lib/img/github.png">
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>...and what's next?</h3>
+                    <br>
+                    <div class="flex-horizontal">
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="1" src="lib/img/handshake.png">
+                            <br>
+                            <span class="fragment fade-up" data-fragment-index="1">SLA monitoring</span>
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="2" src="lib/img/server.png">
+                            <br>
+                            <span class="fragment fade-up" data-fragment-index="2">architecture mapping</span>
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="3" src="lib/img/checklist.png">
+                            <br>
+                            <span class="fragment fade-up" data-fragment-index="3">production checklist</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>which technologies did you use?</h3>
+                    <br>
+                    <div class="flex-horizontal">
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="3" src="lib/img/vuejs.png">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="1" src="lib/img/django.png">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="6" src="lib/img/webpack.png">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="flex-horizontal">
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="2" src="lib/img/celery.png">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="5" src="lib/img/redis.png">
+                        </div>
+                        <div class="column">
+                            <img class="fragment fade-up" data-fragment-index="4" src="lib/img/postgresql.png">
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>...and looks like this</h3>
+                </section>
+
+                <section>
+                    <img src="lib/img/screenshot-login.png" alt="">
+                </section>
+
+                <section>
+                    <img src="lib/img/screenshot-service-list.png" alt="">
+                </section>
+
+                <section>
+                    <img src="lib/img/screenshot-service-details.png" alt="">
+                </section>
+
+                <section>
+                    <img src="lib/img/screenshot-service-auditing-report.png" alt="">
+                </section>
+
+                <section>
+                    <img src="lib/img/screenshot-auditing-grid.png" alt="">
+                </section>
+
+                <section>
+                    <img src="lib/img/screenshot-analytics-overview.png" alt="">
+                </section>
+
+                <section>
+                    <h3>why are you open sourcing it?</h3>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="1">we ❤️ open source</p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="2">it's working fine for&nbsp;<b>us</b></p>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="3">we just want to contribute back</p>
+                    <br>
+                    <p class="flex-horizontal fragment fade-up" data-fragment-index="4">
+                        you can find it at&nbsp;<a target="_blank" href="https://github.com/kiwicom/the-zoo">github.com/kiwicom/the-zoo</a>
+                    </p>
+                </section>
+
+                <section>
+                    <h2>so... any questions?</h2>
+                </section>
+
+                <section>
+                    <h2>Thanks everyone!</h2>
+                </section>
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            Reveal.initialize({
+                history: true,
+                dependencies: [
+                    { src: 'plugin/markdown/marked.js' },
+                    { src: 'plugin/markdown/markdown.js' },
+                    { src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    {
+                        src: 'https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js',
+                        async: true,
+                        callback: function() {
+                            anime({
+                                targets: '.fancy',
+                                color: [
+                                    {value: '#FF0000'},
+                                    {value: '#FFFF00'},
+                                    {value: '#00FF00'},
+                                    {value: '#00FFFF'},
+                                    {value: '#FF00FF'},
+                                ],
+                                easing: 'linear',
+                                loop: true,
+                                direction: 'alternate',
+                                duration: 2000
+                            })
+                        }
+                    }
+                ]
+            });
+        </script>
+    </body>
+</html>

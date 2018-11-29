@@ -1,0 +1,143 @@
+/**
+ * Zoo theme for reveal.js. This theme represent
+ *
+ * By Alex Viscreanu http://xvr.sh
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(../../lib/font/roboto-condensed/roboto-condensed.css);
+@import url(../../lib/font/cookie/cookie.css);
+@import url(../../lib/font/amatic-sc/amatic-sc.css);
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #795548;
+
+$mainColor: #fff;
+$headingColor: #fff;
+
+$mainFontSize: 32px;
+$mainFont: 'Roboto', Helvetica, sans-serif;
+$headingFont: 'Roboto Condensed Light', Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: normal;
+$headingFontWeight: 600;
+$linkColor: #fbc02d;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+.flex-vertical {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.flex-horizontal {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    .column {
+        width: 33%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    img {
+        max-width: 80% !important;
+        max-height: 150px !important;
+    }
+}
+
+.fancy {
+    color: #ff0000;
+    font-family: 'Cookie' !important;
+    font-size: 60px !important;
+}
+
+img {
+    border: 0px solid black !important;
+    background: none !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+.branding {
+    font-family: 'Amatic SC Bold', cursive !important;
+    font-size: 1.75em !important;
+    margin-top: -1rem !important;
+}
+
+.kiwi-logo {
+    max-width: 100px !important;
+}
+
+.avatar {
+    max-width: 150px !important;
+    border-radius: 50%;
+}
+
+.typewriter {
+    width: 100%;
+    text-align: left !important;
+}
+
+.typewriter h2 {
+    overflow: hidden;
+    border-right: .1em solid #fbc02d;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .1em !important;
+    font-family: monospace !important;
+    font-weight: 300 !important;
+    font-size: 1em !important;
+    width: 5.75em !important;
+    animation:
+        typing .5s steps(6, end),
+        blink-caret 750ms steps(44) infinite normal;
+
+    &::before {
+        content: "$ ";
+    }
+}
+
+@keyframes typing {
+    from { width: 1.25em }
+    to { width: 5.65em }
+}
+
+@keyframes blink-caret {
+    from {border-right-color: #fbc02d;}
+    to {border-right-color: transparent;}
+}
+
+section.has-light-background {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: #222;
+	}
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
